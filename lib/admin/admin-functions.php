@@ -15,6 +15,7 @@ function csanalytics_theme_page ()
 			'dev_tag_mgr',
             'speed_enable',
             'dev_adwords_url',
+            'dev_social_url',
             'dev_conv_profile',
             'dev_conv_script',
             'dev_heatmap_script',

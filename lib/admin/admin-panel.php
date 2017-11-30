@@ -1590,23 +1590,23 @@
 			
 		<?php if (get_option('gapi_weather_enable') == 1){ ?>
 			var ZIPCode = '<?php  echo $weatherzip  ?>'
-			jQuery.ajax({
-				dataType: "json",
-				cache: false,
-				url: 'https://maps.googleapis.com/maps/api/geocode/json?address=' +  ZIPCode + '&sensor=false',
-				success: function (jsonData) {
-					var city =	jsonData.results[0].address_components[1].long_name;
-					var county =  jsonData.results[0].address_components[2].long_name;
-					var state; // =	jsonData.results[0].address_components[3].long_name;
-					for (i=0;i<jsonData.results[0].address_components.length;i++) {
-						 if (jsonData.results[0].address_components[i].types[0] == 'administrative_area_level_1') {
-							state = jsonData.results[0].address_components[i].long_name;
-						 }
-					}
-					jQuery('.location-city').append(city.toString());
-					jQuery('.location-state').append(state.toString());			
-				}
-			});		
+			//jQuery.ajax({
+				//dataType: "json",
+				//cache: false,
+				//url: 'https://maps.googleapis.com/maps/api/geocode/json?address=' +  ZIPCode + '&sensor=false',
+				//success: function (jsonData) {
+					//var city =	jsonData.results[0].address_components[1].long_name;
+					//var county =  jsonData.results[0].address_components[2].long_name;
+					//var state; // =	jsonData.results[0].address_components[3].long_name;
+					//for (i=0;i<jsonData.results[0].address_components.length;i++) {
+						 //if (jsonData.results[0].address_components[i].types[0] == 'administrative_area_level_1') {
+							//state = jsonData.results[0].address_components[i].long_name;
+						 //}
+					//}
+					//jQuery('.location-city').append(city.toString());
+					//jQuery('.location-state').append(state.toString());			
+				//}
+			//});		
 			//Creates Table for Weather Data       
 			jQuery.when(
 				jQuery.getJSON(WeatherAPI),
