@@ -80,7 +80,9 @@
 	.csa-select label:before {content:'';right:6px; top:6px;width:20px; height:18px;background:#f8f8f8;position:absolute;pointer-events:none;display:block;} 
 	#csa_business_unit select, #csa_primary_dimension select, #csa_speed_primary_dimension select,#csa_adw_primary_dimension select {min-width: 200px;}
 	#analytics-header {background: #333 none repeat scroll 0 0;margin-top:20px;padding: 20px 25px;}
-	#analytics-logo > img {width: 250px;}
+	#analytics-logo {float:left; width:20%}
+	#analytics-logo > img {width: 100%;}
+	#csa-controls {float:right; width: calc(100% - 20% - 20px)}
 	#csa-nav {float: left;margin-top: 10px;}
 	#csa-nav > a {color: #ddd;font-size: 13px;padding: 5px;}
 	#csa-nav > a span {margin-right:5px}
@@ -92,7 +94,7 @@
 	#panel-links-container a span {color: #fff;display: inline-block;padding: 2px 0 3px 35px;z-index: 9999;width: 126px;font-size: 14px;}
 	#panel-links-container a span:hover, .tabs .active > span {color: #00b9eb !important}
 	.dashicons.dashicons-info {position: relative;}	
-	.dashicons-info span {background: #000 none repeat scroll 0 0;border-radius: 5px;color: #fff;display: none;font-family: verdana;font-size: 14px;left: 35px;padding: 10px;position: absolute;top: -10px;width: 250px;z-index: 9999;}
+	.dashicons-info span {background: rgba(0,0,0, 0.85); none repeat scroll 0 0;border-radius: 5px;color: #fff;display: none;font-family: verdana;font-size: 13px;left: 35px;padding: 10px; line-height:125%; position: absolute;top: -18px;width: 250px;z-index: 9999;}
 	.dashicons-info:hover span {display:block;}
 	.dashicons-info span:after, .dashicons-info span:before {right: 100%;top: 14%;border: solid transparent;content: " ";height: 0;width: 0;position: absolute;pointer-events: none;}
 	.dashicons-info span:after {border-right-color: #000;border-width: 10px;margin-top: -10px;}
@@ -1763,31 +1765,33 @@
   <div id="admin-panel-wrapper">
 		<div id="analytics-header">
 			<div id="analytics-logo" style="float:left; width:20%; margin-right:2%"><img src="<?php echo plugins_url('/csanalytics/lib/admin/images/lnb-logo.png'); ?>" /></div>
-			<div id="csa-nav"><a href="?page=csanalytics-settings"><span class="dashicons dashicons-admin-generic"></span>Admin Settings</a>
-			<?php if(get_option('gapi_dev_industry') == 'other' || get_option('gapi_dev_industry') == 'custom' ){ ?>	
-			|<a href="#TB_inline?width=600&height=550&inlineId=csa-override" class="thickbox override-btn"><span class="dashicons dashicons-admin-tools"></span>ROI Settings</a>
-			<?php } ?>
-			</div>
-			<div id="csa-search">
-				<form id="search-filter" method="post" action="">
-					<fieldset class="alignleft">
-						<table>
-						<tr>
-							<td>
-								<label for="calendar_start">Start Date:</label> <input type="text" name="calendar_start" id="from" value="<?php echo get_option('gapi_calendar_start'); ?>" />&nbsp;
-								<label for="calendar_end">End Date:</label> <input type="text" name="calendar_end" id="to" value="<?php echo get_option('gapi_calendar_end'); ?>" />
-								<div style="display:none"><label for="calendar_diff">Statistical Day(s)</label> <input type="text" name="calendar_diff" id="calendar_diff" value="<?php  echo get_option('gapi_calendar_diff'); ?>" /></div>
-							</td>
-						</tr>
-						</table>
-					</fieldset>
-					<p class="gapi-submit-container">
-						<input type="submit" name="Submit" class="gapi-button" style="background-color:#FEA408; color:#333" value="Save Changes" />
-						<input type="hidden" name="gapi_date_settings" value="save" style="display:none;" />
-					</p>
-					<div class="clear"></div>
-				</form>				
-			</div><!-- #search-override -->
+			<div id="csa-controls">
+				<div id="csa-nav"><a href="?page=csanalytics-settings"><span class="dashicons dashicons-admin-generic"></span>Admin Settings</a>
+				<?php if(get_option('gapi_dev_industry') == 'other' || get_option('gapi_dev_industry') == 'custom' ){ ?>	
+				|<a href="#TB_inline?width=600&height=550&inlineId=csa-override" class="thickbox override-btn"><span class="dashicons dashicons-admin-tools"></span>ROI Settings</a>
+				<?php } ?>
+				</div>
+				<div id="csa-search">
+					<form id="search-filter" method="post" action="">
+						<fieldset class="alignleft">
+							<table>
+							<tr>
+								<td>
+									<label for="calendar_start">Start Date:</label> <input type="text" name="calendar_start" id="from" value="<?php echo get_option('gapi_calendar_start'); ?>" />&nbsp;
+									<label for="calendar_end">End Date:</label> <input type="text" name="calendar_end" id="to" value="<?php echo get_option('gapi_calendar_end'); ?>" />
+									<div style="display:none"><label for="calendar_diff">Statistical Day(s)</label> <input type="text" name="calendar_diff" id="calendar_diff" value="<?php  echo get_option('gapi_calendar_diff'); ?>" /></div>
+								</td>
+							</tr>
+							</table>
+						</fieldset>
+						<p class="gapi-submit-container">
+							<input type="submit" name="Submit" class="gapi-button" style="background-color:#FEA408; color:#333" value="Save Changes" />
+							<input type="hidden" name="gapi_date_settings" value="save" style="display:none;" />
+						</p>
+						<div class="clear"></div>
+					</form>				
+				</div><!-- #search-override -->
+			<div id="csa-controls">
 			<?php add_thickbox(); ?>
 			<div id="csa-override" style="display:none">
 				<form id="override-form" method="post" action="">
@@ -2558,16 +2562,16 @@
 			</div>
 			<div id="board-adwords" class="analytics-board">
 				<div class="board-title-container">
-					<h1 class="board-name">Google AdWords
+					<h1 class="board-name">Digital Advertisement
 						<span class="dashicons dashicons-info">
-							<span class="dashicons-info-box">The AdWords Board Information</span>
+							<span class="dashicons-info-box">Digital Advertisement Information</span>
 						</span>
 					</h1>
 					<div class="clear"></div>
 				</div>			
 				<div class="primary-board-data">
 					<div class="data-name-info">
-						<h2>AdWords Campaign Data Table</h2>
+						<h2>Campaign Data Table</h2>
 						<span class="edu-img"></span>
 					</div>						
 					<div class="edu-tabs">
@@ -2583,11 +2587,6 @@
 							<h2>Schedule your ads for optimal conversion hours.</h2>
 							<p>Site traffic is not equally valuable at every hour of the day. For example, users may be more inclined to purchase items in the evening or on a weekend but still visit your site in the afternoon during the weekday.</p>
 							<p>The Day Parts report helps you decide the best times to display your ads. You may wish to increase your bids during these times.
-							<ol>
-								<li>Go to Seconday Dimension select Hour of Day.</li>
-								<li>Goal Sets show conversion rates for the goals you have defined.</li>
-								<li>Make sure Hour is selected as the primary dimension. Change the dimension to Day of the Week to find any weekday/weekend trends.</li>
-							</ol>
 							<p><strong>Action</strong></p>
 							<p>If your users convert or purchase more during specific day of the week or time of day, then you could set up ad scheduling in your AdWords campaign settings, whereby you increase or decrease your bids during specific times or days.</p>						
 						</div>				
@@ -2597,7 +2596,7 @@
 					  <p>Your browser does not support iframes.</p>
 					</iframe>					
 					<?php } else { ?>
-					<p>Please call LeadsNearby and ask for more details about AdWords Data</p>
+					<p>Please call LeadsNearby and ask for more details about Digital Advertising Data</p>
 					<?php } ?>														
 				</div>
 			</div>
