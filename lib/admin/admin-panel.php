@@ -20,6 +20,7 @@
         $dev_heatmap_page = get_option('gapi_dev_heatmap_page');
         $dev_bl_citations = get_option('gapi_dev_bl_citations');
         $dev_adwords_url = get_option('gapi_dev_adwords_url');
+        $dev_social_url = get_option('gapi_dev_social_url');
         $dev_bl_reviews = get_option('gapi_dev_bl_reviews');
         $gapi_rep_avg_tix = get_option('gapi_rep_avg_tix'); 
         $gapi_inst_avg_tix = get_option('gapi_inst_avg_tix'); 
@@ -112,20 +113,21 @@
 	.primary-board-data > h2 {font-size: 20px;}	
 	.data-name-info {margin:10px 0}
 	.data-name-info > h2 {display: inline-block;font-size: 22px;margin:0;}
-	.edu-img {background-image:url('<?php echo plugins_url('/CSAnalytics/lib/admin/images/education.png'); ?>');display: block;float: right;height: 18px;cursor: pointer;width: 25px;}	
-	#icon-pin {background-image:url('<?php echo plugins_url('/CSAnalytics/lib/admin/images/lnb-pin.png'); ?>'); width:60px; height:82px}
-	#icon-global {background-image:url('<?php echo plugins_url('/CSAnalytics/lib/admin/images/icon-global-21px.png'); ?>')}
-	#icon-roi {background-image:url('<?php echo plugins_url('/CSAnalytics/lib/admin/images/icon-roi-21px.png'); ?>')}
-	#icon-conversion {background-image:url('<?php echo plugins_url('/CSAnalytics/lib/admin/images/icon-conversion-21px.png'); ?>')}
-	#icon-dni {background-image:url('<?php echo plugins_url('/CSAnalytics/lib/admin/images/icon-dni-21px.png'); ?>')}
-	#icon-visitation {background-image:url('<?php echo plugins_url('/CSAnalytics/lib/admin/images/icon-visitation-21px.png'); ?>')}
-	#icon-visibility {background-image:url('<?php echo plugins_url('/CSAnalytics/lib/admin/images/icon-visibility-21px.png'); ?>')}
-	#icon-citation {background-image:url('<?php echo plugins_url('/CSAnalytics/lib/admin/images/icon-citations-21px.png'); ?>')}
-	#icon-weather {background-image:url('<?php echo plugins_url('/CSAnalytics/lib/admin/images/icon-weather-21px.png'); ?>')}
-    #icon-heatmap {background-image:url('<?php echo plugins_url('/CSAnalytics/lib/admin/images/icon-heatmap-21px.png'); ?>')}
-    #icon-reviews {background-image:url('<?php echo plugins_url('/CSAnalytics/lib/admin/images/icon-reviews-21px.png'); ?>')}
-	#icon-adwords {background-image:url('<?php echo plugins_url('/CSAnalytics/lib/admin/images/icon-adwords-21px.png'); ?>')}
-	#icon-speed {background-image:url('<?php echo plugins_url('/CSAnalytics/lib/admin/images/icon-rocket-21px.png'); ?>')}
+	.edu-img {background-image:url('<?php echo plugins_url('/csanalytics/lib/admin/images/education.png'); ?>');display: block;float: right;height: 18px;cursor: pointer;width: 25px;}	
+	#icon-pin {background-image:url('<?php echo plugins_url('/csanalytics/lib/admin/images/lnb-pin.png'); ?>'); width:60px; height:82px}
+	#icon-global {background-image:url('<?php echo plugins_url('/csanalytics/lib/admin/images/icon-global-21px.png'); ?>')}
+	#icon-roi {background-image:url('<?php echo plugins_url('/csanalytics/lib/admin/images/icon-roi-21px.png'); ?>')}
+	#icon-conversion {background-image:url('<?php echo plugins_url('/csanalytics/lib/admin/images/icon-conversion-21px.png'); ?>')}
+	#icon-dni {background-image:url('<?php echo plugins_url('/csanalytics/lib/admin/images/icon-dni-21px.png'); ?>')}
+	#icon-visitation {background-image:url('<?php echo plugins_url('/csanalytics/lib/admin/images/icon-visitation-21px.png'); ?>')}
+	#icon-visibility {background-image:url('<?php echo plugins_url('/csanalytics/lib/admin/images/icon-visibility-21px.png'); ?>')}
+	#icon-citation {background-image:url('<?php echo plugins_url('/csanalytics/lib/admin/images/icon-citations-21px.png'); ?>')}
+	#icon-weather {background-image:url('<?php echo plugins_url('/csanalytics/lib/admin/images/icon-weather-21px.png'); ?>')}
+    #icon-heatmap {background-image:url('<?php echo plugins_url('/csanalytics/lib/admin/images/icon-heatmap-21px.png'); ?>')}
+    #icon-reviews {background-image:url('<?php echo plugins_url('/csanalytics/lib/admin/images/icon-reviews-21px.png'); ?>')}
+	#icon-adwords {background-image:url('<?php echo plugins_url('/csanalytics/lib/admin/images/icon-adwords-21px.png'); ?>')}
+	#icon-social {background-image:url('<?php echo plugins_url('/csanalytics/lib/admin/images/icon-global-21px.png'); ?>')}
+	#icon-speed {background-image:url('<?php echo plugins_url('/csanalytics/lib/admin/images/icon-rocket-21px.png'); ?>')}
 	/* ROI Styles */
 	.goalcontainer {width: 25%; font-family: "OpenSans-Bold",Helvetica,Arial,sans-serif;}
 	.goalcontainer h2 {color: #fff; font-size: 15px; font-weight: bold; line-height: 110%; margin: 0; padding: 10px; text-transform: uppercase;}
@@ -1587,50 +1589,50 @@
 			});		
 			
 		<?php if (get_option('gapi_weather_enable') == 1){ ?>
-		var ZIPCode = '<?php  echo $weatherzip  ?>'
-		jQuery.ajax({
-			dataType: "json",
-			cache: false,
-			url: 'https://maps.googleapis.com/maps/api/geocode/json?address=' +  ZIPCode + '&sensor=false',
-			success: function (jsonData) {
-				var city =	jsonData.results[0].address_components[1].long_name;
-				var county =  jsonData.results[0].address_components[2].long_name;
-				var state; // =	jsonData.results[0].address_components[3].long_name;
-				for (i=0;i<jsonData.results[0].address_components.length;i++) {
-					 if (jsonData.results[0].address_components[i].types[0] == 'administrative_area_level_1') {
-						state = jsonData.results[0].address_components[i].long_name;
-					 }
+			var ZIPCode = '<?php  echo $weatherzip  ?>'
+			jQuery.ajax({
+				dataType: "json",
+				cache: false,
+				url: 'https://maps.googleapis.com/maps/api/geocode/json?address=' +  ZIPCode + '&sensor=false',
+				success: function (jsonData) {
+					var city =	jsonData.results[0].address_components[1].long_name;
+					var county =  jsonData.results[0].address_components[2].long_name;
+					var state; // =	jsonData.results[0].address_components[3].long_name;
+					for (i=0;i<jsonData.results[0].address_components.length;i++) {
+						 if (jsonData.results[0].address_components[i].types[0] == 'administrative_area_level_1') {
+							state = jsonData.results[0].address_components[i].long_name;
+						 }
+					}
+					jQuery('.location-city').append(city.toString());
+					jQuery('.location-state').append(state.toString());			
 				}
-				jQuery('.location-city').append(city.toString());
-				jQuery('.location-state').append(state.toString());			
-			}
-		});		
-		//Creates Table for Weather Data       
-		jQuery.when(
-			jQuery.getJSON(WeatherAPI),
-			jQuery.getJSON(GoalValueTotals)
-		).done (function (data, data2) {
-			var data = data[0].data;
-			//console.log(data, data2);
-			var weatherHTML = '';
-			var lookup = {};
-			var weather = data.weather;
-			for (var i = 0; i < weather.length; ++i) {
-				var key = weather[i].date.replace(/-/g,'');
-				lookup[key] = i;
-				weatherHTML += '<li id="day'+[i]+'" class="day day-container"><div class="date">' + weather[i].date + '</div><div class="svg-icon"><img src="' + weather[i].hourly[0].weatherIconUrl[0].value + '" /></div><div class="data-wrap col2"><p class="data hi-temp"><span>&deg;' + weather[i].maxtempF + '</span><sup class="deg ng-scope" data-ng-if="hasValue()"></sup></p><p class="data lo-temp"><span>&deg;' + weather[i].mintempF + '</span><sup class="deg ng-scope" data-ng-if="hasValue()"></sup></p></div><p class="data desc">' + weather[i].hourly[0].weatherDesc[0].value + '</p></li>';
-			}
-			jQuery('#weather_report').append(weatherHTML);
-			jQuery.each(data2[0], function (i, item) {
-				var day = jQuery("#day" + lookup[item.date]);
-				day.append('<div class="content"><div class="content-conv-rate"><span class="goal-content">Goal Conversion Rate: </span><span class="goal-value">' + (+item.goalConversionRateAll).toFixed(2) + '%</span></div><div class="content-comp"><span class="goal-content">Goal Completions: </span><span class="goal-value">' + item.goalCompletionsAll + '</span></div><div class="content-value"></div></div>');
-			})
-			jQuery('.day-container').click(function() {
-			  jQuery(this).prev('.highlighter').find('.content').hide();
-			  jQuery(this).children('.content').animate({width: 'toggle'});
-			  jQuery(this).toggleClass('highlighter');
-			});			
-		});
+			});		
+			//Creates Table for Weather Data       
+			jQuery.when(
+				jQuery.getJSON(WeatherAPI),
+				jQuery.getJSON(GoalValueTotals)
+			).done (function (data, data2) {
+				var data = data[0].data;
+				//console.log(data, data2);
+				var weatherHTML = '';
+				var lookup = {};
+				var weather = data.weather;
+				for (var i = 0; i < weather.length; ++i) {
+					var key = weather[i].date.replace(/-/g,'');
+					lookup[key] = i;
+					weatherHTML += '<li id="day'+[i]+'" class="day day-container"><div class="date">' + weather[i].date + '</div><div class="svg-icon"><img src="' + weather[i].hourly[0].weatherIconUrl[0].value + '" /></div><div class="data-wrap col2"><p class="data hi-temp"><span>&deg;' + weather[i].maxtempF + '</span><sup class="deg ng-scope" data-ng-if="hasValue()"></sup></p><p class="data lo-temp"><span>&deg;' + weather[i].mintempF + '</span><sup class="deg ng-scope" data-ng-if="hasValue()"></sup></p></div><p class="data desc">' + weather[i].hourly[0].weatherDesc[0].value + '</p></li>';
+				}
+				jQuery('#weather_report').append(weatherHTML);
+				jQuery.each(data2[0], function (i, item) {
+					var day = jQuery("#day" + lookup[item.date]);
+					day.append('<div class="content"><div class="content-conv-rate"><span class="goal-content">Goal Conversion Rate: </span><span class="goal-value">' + (+item.goalConversionRateAll).toFixed(2) + '%</span></div><div class="content-comp"><span class="goal-content">Goal Completions: </span><span class="goal-value">' + item.goalCompletionsAll + '</span></div><div class="content-value"></div></div>');
+				})
+				jQuery('.day-container').click(function() {
+				  jQuery(this).prev('.highlighter').find('.content').hide();
+				  jQuery(this).children('.content').animate({width: 'toggle'});
+				  jQuery(this).toggleClass('highlighter');
+				});			
+			});
         <?php } ?>		
 
 		//Show Hide Extra Data
@@ -1791,7 +1793,7 @@
 						<div class="clear"></div>
 					</form>				
 				</div><!-- #search-override -->
-			<div id="csa-controls">
+			</div>
 			<?php add_thickbox(); ?>
 			<div id="csa-override" style="display:none">
 				<form id="override-form" method="post" action="">
@@ -1877,7 +1879,8 @@
 		<a href="#board-weather" id="icon-weather" class="icon"><span style="right:-98px">Weather</span></a>	
 		<a href="#board-heatmap" id="icon-heatmap" class="icon"><span style="right:-98px">Heatmap</span></a>
 		<a href="#board-reviews" id="icon-reviews" class="icon"><span style="right:-98px">Reviews</span></a>		
-		<a href="#board-adwords" id="icon-adwords" class="icon"><span style="right:-98px">AdWords</span></a>		      
+		<a href="#board-adwords" id="icon-adwords" class="icon"><span style="right:-98px">AdWords</span></a>
+		<a href="#board-social" id="icon-social" class="icon"><span style="right:-98px">Social</span></a>		      
 		<a href="#board-speed" id="icon-speed" class="icon"><span style="right:-98px">Site Speed</span></a>		      
     </div>    
 	<div id="panel-board-container"><!-- Start #panel-board-container -->
@@ -2600,6 +2603,38 @@
 					<?php } ?>														
 				</div>
 			</div>
+			<div id="board-social" class="social-board">
+				<div class="board-title-container">
+					<h1 class="board-name">Social Media
+						<span class="dashicons dashicons-info">
+							<span class="dashicons-info-box">Social Media Information</span>
+						</span>
+					</h1>
+					<div class="clear"></div>
+				</div>			
+				<div class="primary-board-data">
+					<div class="data-name-info">
+						<h2>Social Media Data</h2>
+						<span class="edu-img"></span>
+					</div>						
+					<div class="edu-tabs">
+						<ul>
+							<li><a href="#tabs-1">Overview</a></li>
+						</ul>
+						<div id="tabs-1">
+							<h2>Use the data in this section to view how well your Social Media is performing.</h2>
+							<p>You can view all of your social data (at a glance). You can also view individual KPI's such as Click, Impressions, Likes, Engagement, and Click Type</p>
+						</div>				
+					</div>	
+					<?php if (get_option('gapi_dev_adwords_url') <> "") { ?>
+					<iframe src="<?php echo $dev_social_url ?>" height="1100" width="100%">
+					  <p>Your browser does not support iframes.</p>
+					</iframe>					
+					<?php } else { ?>
+					<p>Please call LeadsNearby and ask for more details about Social Media Data</p>
+					<?php } ?>														
+				</div>
+			</div>			
 			<div id="board-speed" class="analytics-board">
 				<div class="board-title-container">
 					<h1 class="board-name">Site Speed

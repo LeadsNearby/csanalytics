@@ -164,12 +164,13 @@ jQuery(document).ready(function() {
 <div id="analytics-logo" style="margin:1% 0"><img src="<?php echo plugins_url('/csanalytics/lib/admin/images/lnb-logo-blk.png'); ?>" /></div>
 <p style="font-size: 20px; width: 90%;">Welcome to CSAnalytics by LeadsNearby. LeadsNearby offers the most comprehensive local search marketing in the industry. Our analytics will provide you an indepth look at how your business is progressing while LeadsNearby. Our real-time ROI data board will give insite on how your website is performing for you. All additional data boards will give the information you need to understand how your real-time ROI is calculated.</p>
     <ul class="tabs-menu">
-        <li class="current"><a href="#tab-1">Customer Settings</a></li>
-        <li><a href="#tab-2">Google API Settings</a></li>
-        <li><a href="#tab-3">Convirza/Chat Data Settings</a></li>
-        <li><a href="#tab-4">Heatmap Settings</a></li>
-        <li><a href="#tab-5">LNB Data Settings</a></li>
-        <li><a href="#tab-6">Weather Data Settings</a></li>
+        <li class="current"><a href="#tab-1">Client Settings</a></li>
+        <li><a href="#tab-2">Google API</a></li>
+        <li><a href="#tab-3">CYFE Data</a></li>
+        <li><a href="#tab-4">Convirza/Chat Data</a></li>
+        <li><a href="#tab-5">Heatmap</a></li>
+        <li><a href="#tab-6">LNB Data</a></li>
+        <li><a href="#tab-7">Weather Data</a></li>
     </ul>
     <div class="tab">
 		<form method="post" action="">
@@ -246,13 +247,6 @@ jQuery(document).ready(function() {
 				</tr>
 				<tr>
 					<td>
-						<label for="dev_adwords_url"><?php _e( 'Cyfe AdWords URL', 'inputname' ); ?></label><br />
-						<em>Please enter the Cyfe AdWords URL</em><br />					
-						<input name="dev_adwords_url" type="text" id="dev_adwords_url" class="col-input body-style" value="<?php echo get_option('gapi_dev_adwords_url'); ?>" class="regular-text" />
-					</td>
-				</tr>
-				<tr>
-					<td>
 						<label for="speed_enable"><?php _e( 'Enable Site Speed Data', 'inputname' ); ?></label><br />
 						<input id="speed_enable" name="speed_enable" type="checkbox" value="1" <?php checked( '1', get_option( 'gapi_speed_enable' ) ); ?> />
 						<em>Cliek to enable Google Site Speed Data.</em>
@@ -272,6 +266,29 @@ jQuery(document).ready(function() {
 			</div>			
         </div>
         <div id="tab-3" class="tab-content">
+			<fieldset>
+				<table class="form-table">
+				<tr>
+					<td>
+						<label for="dev_adwords_url"><?php _e( 'Cyfe AdWords URL', 'inputname' ); ?></label><br />
+						<em>Please enter the Cyfe AdWords URL</em><br />					
+						<input name="dev_adwords_url" type="text" id="dev_adwords_url" class="col-input body-style" value="<?php echo get_option('gapi_dev_adwords_url'); ?>" class="regular-text" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="dev_social_url"><?php _e( 'Cyfe Social URL', 'inputname' ); ?></label><br />
+						<em>Please enter the Cyfe Social URL</em><br />					
+						<input name="dev_social_url" type="text" id="dev_social_url" class="col-input body-style" value="<?php echo get_option('gapi_dev_social_url'); ?>" class="regular-text" />
+					</td>
+				</tr>					
+				</table>
+			</fieldset>	
+			<div class="gapi-submit-container">
+				<div class="gapi-button gapi-next">Next</div>
+			</div>			
+        </div>        
+        <div id="tab-4" class="tab-content">
 			<fieldset>
 				<table class="form-table">
 				<tr>
@@ -301,7 +318,7 @@ jQuery(document).ready(function() {
 				<div class="gapi-button gapi-next">Next</div>
 			</div>			
         </div>
-        <div id="tab-4" class="tab-content">
+        <div id="tab-5" class="tab-content">
 			<fieldset>
 				<table class="form-table">
 				<tr>
@@ -324,7 +341,7 @@ jQuery(document).ready(function() {
 				<div class="gapi-button gapi-next">Next</div>
 			</div>			
         </div>		
-        <div id="tab-5" class="tab-content">
+        <div id="tab-6" class="tab-content">
 			<fieldset>
 				<table class="form-table">
 				<tr>
@@ -361,7 +378,7 @@ jQuery(document).ready(function() {
 				<div class="gapi-button gapi-next">Next</div>
 			</div>		
         </div>
-		<div id="tab-6" class="tab-content">
+		<div id="tab-7" class="tab-content">
 			<fieldset>
 				<table class="form-table">
 				<tr>
