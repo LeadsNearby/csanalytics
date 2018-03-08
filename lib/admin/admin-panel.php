@@ -81,9 +81,9 @@
 	.csa-select label:before {content:'';right:6px; top:6px;width:20px; height:18px;background:#f8f8f8;position:absolute;pointer-events:none;display:block;} 
 	#csa_business_unit select, #csa_primary_dimension select, #csa_speed_primary_dimension select,#csa_adw_primary_dimension select {min-width: 200px;}
 	#analytics-header {background: #333 none repeat scroll 0 0;margin-top:20px;padding: 20px 25px;}
-	#analytics-logo {float:left; width:20%}
+	#analytics-logo {float:left; width:20%; margin-right:2%;}
 	#analytics-logo > img {width: 100%;}
-	#csa-controls {float:right; width: calc(100% - 20% - 20px)}
+	#csa-controls {float:right; width: calc(100% - 22% - 10px)}
 	#csa-nav {float: left;margin-top: 10px;}
 	#csa-nav > a {color: #ddd;font-size: 13px;padding: 5px;}
 	#csa-nav > a span {margin-right:5px}
@@ -172,7 +172,7 @@
 	.title1 .module-title .title{color:#fff;font-size:1.1em; font-weight: normal;margin:0}
 	.summary-list{float:left;font-weight:700;line-height:1.8em;margin:0 0 -15px 2px;width:33%}		
 	.tg  {border-collapse:collapse;border-spacing:0;}
-	.tg td{color:#333;font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border:1px solid #ccc;overflow:hidden;word-break:normal;}
+	.tg td{color:#333;font-family:Arial, sans-serif;font-size:13px;padding:10px 5px;border:1px solid #ccc;overflow:hidden;word-break:normal;}
 	.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border:1px solid #ccc;overflow:hidden;word-break:normal;}
 	.tg .tg-yw4l{line-height: normal;vertical-align:top}
 	.tg-yw4l > a {color: royalblue !important;}
@@ -182,11 +182,11 @@
 	#loading {max-height:1500px; height:100%}
 	#loading img {padding:408px 0;width: 420px; top: 50%; margin: 0 auto; position: relative; display: block;}
 	/* Override Styles */
-	#csa-search > form {float: right; width: 55%; padding: 0 22px;}
+	#csa-search > form {float: right; width: 65%; padding: 0 0 0 22px;}
 	#csa-override {display:none}
 	#gapi-overrides {color:#FEA408;line-height: 20px;text-decoration: underline;}
-	.gapi-submit-container {float: left;margin: 0 0 0 10px;width: 130px;}
-	.gapi-button {background: #0073aa none repeat scroll 0 0;border: medium none;border-radius: 5px; color: #fff;cursor: pointer;float: none;margin-top:4px; padding:4px; width:90%;}    	
+	.gapi-submit-container {float: left;margin: 0 0 0 10px}
+	.gapi-button {background: #0073aa none repeat scroll 0 0;border: medium none;border-radius: 5px; color: #fff;cursor: pointer;float: none;margin-top:4px; padding:4px; width:100%;}    	
 	#reportrange > span {color: #000;}
 	#override-form table {width: 100%;}
 	#override-form table #override-form th, #override-form table td {text-align:left; padding: 15px 7px;}
@@ -262,22 +262,22 @@
 	var ConvAPISec= '%241%24SVUTmT1e%24hqQHTUvAFOoUuZ5bFVqle.';
 	var NewConvData ='https://api.logmycalls.com/services/getCallDetails?criteria[external_ouid]='+ConvExtID+'&criteria[start_calldate]='+startdate+'&criteria[end_calldate]='+enddate+'&api_key='+ConvAPIKey+'&api_secret='+ConvAPISec+'&limit=1000&sort_by=id&sort_order=asc';	
 	//Google Goal Data
-	var GoalOneData = '<?php echo plugins_url('csanalytics/lib/data/data-GoalOneData.php'); ?>';
-	var GoalTwoData = '<?php echo plugins_url('csanalytics/lib/data/data-GoalTwoData.php'); ?>';
-	var GoalThreeData = '<?php echo plugins_url('csanalytics/lib/data/data-GoalThreeData.php'); ?>';
-	var GoalFourData = '<?php echo plugins_url('csanalytics/lib/data/data-GoalFourData.php'); ?>';
-	var GoalFiveData = '<?php echo plugins_url('csanalytics/lib/data/data-GoalFiveData.php'); ?>';
-	var GoalCompletionRateAll = '<?php echo plugins_url('csanalytics/lib/data/data-GoalCompletionRateAll.php'); ?>';
-	var GoalValueTotals = '<?php echo plugins_url('csanalytics/lib/data/data-GoalValueTotals.php'); ?>';				
-	var dataChannelGroupingAll = '<?php echo plugins_url('csanalytics/lib/data/data-ChannelData.php'); ?>';	
-	var countryBySession = '<?php echo plugins_url('csanalytics/lib/data/data-CountryBySessions.php'); ?>';
-	var dataDevicesAll = '<?php echo plugins_url('csanalytics/lib/data/data-Devices.php'); ?>';
-	var newVSReturning = '<?php echo plugins_url('csanalytics/lib/data/data-NewVsReturningUsers.php'); ?>';
-	var VisitorsByDate = '<?php echo plugins_url('csanalytics/lib/data/data-VisitorsByDate.php'); ?>';
-	var SessionsPageViews = '<?php echo plugins_url('csanalytics/lib/data/data-SessionsPageViews.php'); ?>';
-	var UsersSessionsPageViews = '<?php echo plugins_url('csanalytics/lib/data/data-UsersSessionsPageViews.php'); ?>';   
-	var SiteSpeed = '<?php echo plugins_url('csanalytics/lib/data/data-SiteSpeed.php'); ?>';  	
-	var ReferralPath = '<?php echo plugins_url('csanalytics/lib/data/data-SiteSpeed.php'); ?>';  	
+	var GoalOneData = '<?php echo plugins_url('/csanalytics/lib/data/data-GoalOneData.php'); ?>';
+	var GoalTwoData = '<?php echo plugins_url('/csanalytics/lib/data/data-GoalTwoData.php'); ?>';
+	var GoalThreeData = '<?php echo plugins_url('/csanalytics/lib/data/data-GoalThreeData.php'); ?>';
+	var GoalFourData = '<?php echo plugins_url('/csanalytics/lib/data/data-GoalFourData.php'); ?>';
+	var GoalFiveData = '<?php echo plugins_url('/csanalytics/lib/data/data-GoalFiveData.php'); ?>';
+	var GoalCompletionRateAll = '<?php echo plugins_url('/csanalytics/lib/data/data-GoalCompletionRateAll.php'); ?>';
+	var GoalValueTotals = '<?php echo plugins_url('/csanalytics/lib/data/data-GoalValueTotals.php'); ?>';				
+	var dataChannelGroupingAll = '<?php echo plugins_url('/csanalytics/lib/data/data-ChannelData.php'); ?>';	
+	var countryBySession = '<?php echo plugins_url('/csanalytics/lib/data/data-CountryBySessions.php'); ?>';
+	var dataDevicesAll = '<?php echo plugins_url('/csanalytics/lib/data/data-Devices.php'); ?>';
+	var newVSReturning = '<?php echo plugins_url('/csanalytics/lib/data/data-NewVsReturningUsers.php'); ?>';
+	var VisitorsByDate = '<?php echo plugins_url('/csanalytics/lib/data/data-VisitorsByDate.php'); ?>';
+	var SessionsPageViews = '<?php echo plugins_url('/csanalytics/lib/data/data-SessionsPageViews.php'); ?>';
+	var UsersSessionsPageViews = '<?php echo plugins_url('/csanalytics/lib/data/data-UsersSessionsPageViews.php'); ?>';   
+	var SiteSpeed = '<?php echo plugins_url('/csanalytics/lib/data/data-SiteSpeed.php'); ?>';  	
+	var ReferralPath = '<?php echo plugins_url('/csanalytics/lib/data/data-SiteSpeed.php'); ?>';  	
 	//Industry
 	var Plumber = 300;
 	var Electrician = 350;
@@ -1766,7 +1766,7 @@
 	</script>
   <div id="admin-panel-wrapper">
 		<div id="analytics-header">
-			<div id="analytics-logo" style="float:left; width:20%; margin-right:2%"><img src="<?php echo plugins_url('/csanalytics/lib/admin/images/lnb-logo.png'); ?>" /></div>
+			<div id="analytics-logo"><img src="<?php echo plugins_url('/csanalytics/lib/admin/images/lnb-logo.png'); ?>" /></div>
 			<div id="csa-controls">
 				<div id="csa-nav"><a href="?page=csanalytics-settings"><span class="dashicons dashicons-admin-generic"></span>Admin Settings</a>
 				<?php if(get_option('gapi_dev_industry') == 'other' || get_option('gapi_dev_industry') == 'custom' ){ ?>	
@@ -2011,7 +2011,7 @@
 					        <input type="radio" name="primary_dimension" value="medium" <?php checked(medium, get_option('gapi_primary_dimension'), true); ?>><span>Medium</span>
 					        <input type="radio" name="primary_dimension" value="keyword" <?php checked(keyword, get_option('gapi_primary_dimension'), true); ?>><span>Keyword</span>
 					        <div style="display: block; border: 1px solid rgb(204, 204, 204); padding: 10px; background-color: rgb(241, 241, 241); margin-top: 10px;">
-								<div style="display:none">
+								<div>
 									<label>
 										<span class="label">Secondary Dimension:</span> 
 										<select name="secondary_dimension" id="secondary_dimension">
@@ -2022,6 +2022,7 @@
 											<option value="medium" <?php if(get_option('gapi_secondary_dimension') == 'medium'){?>selected="selected"<?php }?>>Medium</option>
 											<option value="keyword" <?php if(get_option('gapi_secondary_dimension') == 'keyword'){?>selected="selected"<?php }?>>Keyword</option>
 											<option value="campaign" <?php if(get_option('gapi_secondary_dimension') == 'campaign'){?>selected="selected"<?php }?>>Campaign</option>
+											<option value="adContent" <?php if(get_option('gapi_secondary_dimension') == 'adContent'){?>selected="selected"<?php }?>>Ad Content</option>
 										</select>
 									</label>
 								</div>
@@ -2071,6 +2072,10 @@
 							<th class="tg-031e" rowspan="2">Medium</th>
 							<?php } elseif ($gapi_secondary_dimension == 'keyword') { ?>
 							<th class="tg-031e" rowspan="2">Keyword</th>
+							<?php } elseif ($gapi_secondary_dimension == 'campaign') { ?>
+							<th class="tg-031e" rowspan="2">Campaign</th>
+							<?php } elseif ($gapi_secondary_dimension == 'adContent') { ?>
+							<th class="tg-031e" rowspan="2">Ad Content</th>
 							<?php } ?>
 							<th class="tg-yw4l" colspan="3">Acquisition</th>
 							<th class="tg-yw4l" colspan="3">Behavior</th>
@@ -2595,15 +2600,15 @@
 						</div>				
 					</div>	
 					<?php if (get_option('gapi_dev_adwords_url') <> "") { ?>
-					<iframe src="<?php echo $dev_adwords_url ?>" height="1100" width="100%">
-					  <p>Your browser does not support iframes.</p>
-					</iframe>					
+					<a href="<?php echo $dev_adwords_url ?>" target="_Blank">
+					  <p>Click here to view Advertising Campaign data</p>
+					</a>
 					<?php } else { ?>
-					<p>Please call LeadsNearby and ask for more details about Digital Advertising Data</p>
+					<p>Please call LeadsNearby and ask for more details about Advertising Campaign Data</p>
 					<?php } ?>														
 				</div>
 			</div>
-			<div id="board-social" class="social-board">
+			<div id="board-social" class="analytics-board">
 				<div class="board-title-container">
 					<h1 class="board-name">Social Media
 						<span class="dashicons dashicons-info">
@@ -2626,10 +2631,10 @@
 							<p>You can view all of your social data (at a glance). You can also view individual KPI's such as Click, Impressions, Likes, Engagement, and Click Type</p>
 						</div>				
 					</div>	
-					<?php if (get_option('gapi_dev_adwords_url') <> "") { ?>
-					<iframe src="<?php echo $dev_social_url ?>" height="1100" width="100%">
-					  <p>Your browser does not support iframes.</p>
-					</iframe>					
+					<?php if (get_option('gapi_dev_social_url') <> "") { ?>
+					<a href="<?php echo $dev_social_url ?>" target="_Blank">
+					  <p>Click here to view to display Social Media data</p>
+					</a>					
 					<?php } else { ?>
 					<p>Please call LeadsNearby and ask for more details about Social Media Data</p>
 					<?php } ?>														
