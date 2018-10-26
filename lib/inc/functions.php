@@ -4,7 +4,7 @@
 	add_action('wp_enqueue_scripts', 'csanalytics_ext_scripts');
 	function csanalytics_ext_scripts()  {
 		if (!is_admin()) {
-			wp_register_script('js-cookie', plugins_url('js/js-cookie.js',__FILE__),'', '', FALSE);
+			wp_register_script('js-cookie', plugins_url('js/js-cookie.js',__FILE__),array(), null, true);
 			wp_enqueue_script('js-cookie');			
 		}		
 	}
@@ -27,7 +27,7 @@
 
             if ($dev_conv_profile <> "" && $dev_conv_script <> ""){	
 
-	        wp_register_script( 'csanalytics-dni', 'https://dni.logmycalls.com/dni.js','', null, FALSE);
+	        wp_register_script( 'csanalytics-dni', 'https://dni.logmycalls.com/dni.js',array('js-cookie'), null, true);
 	        wp_enqueue_script('csanalytics-dni');
 
                 echo stripslashes ($dev_conv_script);
