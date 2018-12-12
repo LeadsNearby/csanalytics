@@ -40,6 +40,6 @@ require_once CSAnalytics_INC . '/functions.php';
 
 add_action('admin_init', function () {
     if (class_exists('\lnb\core\GitHubPluginUpdater')) {
-        new \lnb\core\GitHubPluginUpdater(__FILE__, 'repo-slug');
+        new \lnb\core\GitHubPluginUpdater(__FILE__, 'csanalytics');
     }
 }, 99);
