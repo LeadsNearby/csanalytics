@@ -1,0 +1,29 @@
+thead:not(.ui-datepicker-calendar thead)  {
+  cursor: pointer;
+  background: #3c8dbc;
+}
+
+thead tr th { 
+  font-weight: bold;
+  padding: 12px 30px;
+  padding-left: 42px;
+}
+
+#csanalytics-data thead tr th {
+    background: url(bg.gif) no-repeat center right 4px #3c8dbc !important;    
+    padding-right: 20px;
+    background-repeat: no-repeat;
+    background-position: 100% 100%;
+}
+
+thead tr th.headerSortUp, thead tr th.headerSortDown {
+    background: #3c8dbc;
+}
+
+thead tr th.headerSortUp {
+    background: url(asc.gif) no-repeat center right 4px #3c8dbc !important;
+}
+
+thead tr th.headerSortDown {
+    background: url(desc.gif) no-repeat center right 4px #3c8dbc !important;
+}

@@ -11,6 +11,9 @@ require_once( $parse_uri[0] . 'wp-load.php' );;
 header('Content-type: application/json');
 // Set your CSV feed
 $feed = get_option('gapi_dev_keyword_rank');
+
+//$feed = 'https://www.hobaica.com/wp-content/plugins/csanalytics/lib/csv-json/keyword_rank_tmzplumbing.csv';
+
 // Arrays we'll use later
 $keys = array();
 $newArray = array();

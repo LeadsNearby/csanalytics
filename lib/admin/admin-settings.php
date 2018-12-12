@@ -106,7 +106,6 @@ jQuery(document).ready(function() {
 } 
 .tabs-menu {
     height: 30px;
-    float: left;
     clear: both;
     margin: 0;
 }
@@ -143,7 +142,6 @@ jQuery(document).ready(function() {
 .tab {
     border: 1px solid #d4d4d1;
     background-color: #fff;
-    float: left;
     margin-bottom: 20px;
     width: auto;
     padding-bottom: 20px;
@@ -171,6 +169,8 @@ jQuery(document).ready(function() {
         <li><a href="#tab-5">Heatmap</a></li>
         <li><a href="#tab-6">LNB Data</a></li>
         <li><a href="#tab-7">Weather Data</a></li>
+        <li><a href="#tab-8">ServiceTitan</a></li>
+		<li><a href="#tab-9">OntraPort</a></li>
     </ul>
     <div class="tab">
 		<form method="post" action="">
@@ -250,6 +250,13 @@ jQuery(document).ready(function() {
 						<label for="speed_enable"><?php _e( 'Enable Site Speed Data', 'inputname' ); ?></label><br />
 						<input id="speed_enable" name="speed_enable" type="checkbox" value="1" <?php checked( '1', get_option( 'gapi_speed_enable' ) ); ?> />
 						<em>Cliek to enable Google Site Speed Data.</em>
+					</td>
+				</tr>
+                <tr>
+					<td>
+						<label for="adwords_enable"><?php _e( 'Enable AdWords Data', 'inputname' ); ?></label><br />
+						<input id="adwords_enable" name="adwords_enable" type="checkbox" value="1" <?php checked( '1', get_option( 'gapi_adwords_enable' ) ); ?> />
+						<em>Cliek to display Google Ad Words data. AdWords must be tied to Google Analytics for this to work properly.</em>
 					</td>
 				</tr>				
 				<tr>
@@ -403,12 +410,66 @@ jQuery(document).ready(function() {
 					</td>
 				</tr>					
 				</table>
-			</fieldset>						
+			</fieldset>
+			<div class="gapi-submit-container">
+				<div class="gapi-button gapi-next">Next</div>
+			</div>									
+        </div>
+		<div id="tab-8" class="tab-content">
+			<fieldset>
+				<table class="form-table">
+    				<tr>
+    					<td>
+    						<label for="dev_servicetitan_apikey"><?php _e( 'ServiceTitan API Key', 'inputname' ); ?></label><br />
+    						<em>Please enter the Service Titan API Key</em><br />					
+    						<input name="dev_servicetitan_apikey" type="text" id="dev_servicetitan_apikey" class="col-input body-style" value="<?php echo get_option('gapi_dev_servicetitan_apikey'); ?>" class="regular-text" />
+    					</td>
+    				</tr>					
+				</table>
+			</fieldset>
+			<div class="gapi-submit-container">
+				<div class="gapi-button gapi-next">Next</div>
+			</div>									
+        </div>        
+        <div id="tab-9" class="tab-content">
+		<fieldset>
+				<table class="form-table">
+				<tr>
+					<td>
+						<label for="dev_ontraport_enable"><?php _e( 'Enable OntraPort Data Features', 'inputname' ); ?></label><br />
+						<em>Click to enable OntraPort Data Features</em>
+						<input id="dev_ontraport_enable" name="dev_ontraport_enable" type="checkbox" value="1" <?php checked( '1', get_option( 'gapi_dev_ontraport_enable' ) ); ?> />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="dev_ontraport_clientkey"><?php _e( 'OntraPort Client Key', 'inputname' ); ?></label><br />
+						<em>Please enter the LeadsNearby OntraPort Client Key</em><br />					
+						<input name="dev_ontraport_clientkey" type="text" id="dev_ontraport_clientkey" class="col-input body-style" value="<?php echo get_option('gapi_dev_ontraport_clientkey'); ?>" class="regular-text" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="dev_ontraport_apikey"><?php _e( 'OntraPort API Key', 'inputname' ); ?></label><br />
+						<em>Please enter the OntraPort API Key obtained from <a href="https://app.ontraport.com/#!/api_settings/listAll">https://app.ontraport.com/#!/api_settings/listAll</a></em><br />					
+						<input name="dev_ontraport_apikey" type="text" id="dev_ontraport_apikey" class="col-input body-style" value="<?php echo get_option('gapi_dev_ontraport_apikey'); ?>" class="regular-text" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="dev_ontraport_appid"><?php _e( 'OntraPort App ID', 'inputname' ); ?></label><br />
+						<em>Please enter the OntraPort API Key obtained from <a href="https://app.ontraport.com/#!/api_settings/listAll">https://app.ontraport.com/#!/api_settings/listAll</a></em><br />					
+						<input name="dev_ontraport_appid" type="text" id="dev_ontraport_appid" class="col-input body-style" value="<?php echo get_option('gapi_dev_ontraport_appid'); ?>" class="regular-text" />
+					</td>
+				</tr>					
+				</table>
+			</fieldset>		
         </div>
 		<p class="gapi-submit-container">
-			<input style="background:green; margin:-1px" type="submit" name="Submit" class="gapi-button" value="Save Changes" />
+			<input style="background:green" type="submit" name="Submit" class="gapi-button" value="Save Changes" />
 			<input type="hidden" name="csanalytics_settings" value="save" style="display:none;" />
-		</p>	        
+		</p>
+		<div class="clear"></div>
 		</form>	
     </div>
 </div>

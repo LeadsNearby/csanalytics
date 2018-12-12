@@ -14,6 +14,7 @@ function csanalytics_theme_page ()
 			'dev_profile',
 			'dev_tag_mgr',
             'speed_enable',
+            'adwords_enable',
             'dev_adwords_url',
             'dev_social_url',
             'dev_conv_profile',
@@ -35,6 +36,11 @@ function csanalytics_theme_page ()
 			'weather_enable',
 			'weather_api',
 			'weather_zip',
+			'dev_ontraport_enable',
+			'dev_ontraport_clientkey',
+			'dev_ontraport_apikey',
+			'dev_ontraport_appid',
+			'dev_servicetitan_apikey',
 		);
 		
 		foreach ( $options as $opt )
@@ -133,6 +139,37 @@ function csanalytics_theme_page ()
 			'speed_primary_dimension',
 			'speed_secondary_dimension',
 			'speed_max_results',
+          			
+		);
+		
+		foreach ( $options as $opt )
+		{
+			delete_option ( 'gapi_'.$opt, $_POST[$opt] );
+			add_option ( 'gapi_'.$opt, $_POST[$opt] );	
+		}				 
+	}
+	
+	if ( count($_POST) > 0 && isset($_POST['gapi_ontraport_campaign_options']) )
+	{
+		$options = array (
+			'dev_campaign_group',
+			'dev_campaign_group_name',
+          			
+		);
+		
+		foreach ( $options as $opt )
+		{
+			delete_option ( 'gapi_'.$opt, $_POST[$opt] );
+			add_option ( 'gapi_'.$opt, $_POST[$opt] );	
+		}				 
+	}
+	
+	if ( count($_POST) > 0 && isset($_POST['gapi_st_sort_data']) )
+	{
+		$options = array (
+		    'dev_st_campaign_group',
+			'dev_st_campaign_group_name',
+			'st_max_results',
           			
 		);
 		

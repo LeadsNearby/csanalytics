@@ -112,7 +112,7 @@ if($gapi_primary_dimension <> "" && $gapi_secondary_dimension <> ""){
 		'pageviewsPerSession' => $row[6],
 		'avgSessionDuration' => $row[7],
 		'goalConversionRateAll' => $row[8],
-		'goalCompletionsAll' => $row[8]
+		'goalCompletionsAll' => $row[9]
 	  );
 	}
 } elseif($gapi_primary_dimension <> ""){
