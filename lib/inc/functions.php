@@ -44,4 +44,4 @@ function csanalytics_heatmap_script() {
         echo stripslashes($dev_heatmap_script);
     }
 }
-?>f
+?>
