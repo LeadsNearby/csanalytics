@@ -3475,7 +3475,6 @@
                                     <th id="positions">Position</th>
                                     <th id="prev">Previous</th>
                                     <th id="change">Change</th>
-                                    <th id="page">Page</th>
                                     <th id="best">Best</th>
                                 </tr>
 								</thead>
