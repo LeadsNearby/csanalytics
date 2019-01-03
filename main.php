@@ -3,7 +3,7 @@
 Plugin Name: CSAnalytics
 Plugin URI: http://leadsnearby.com
 Description: Plugin to display LeadsNearby Metrics
-Version: 3.1.2
+Version: 3.2.0
 Author: LeadsNearby
 Author URI: http://leadsnearby.com
 License: GPLv2
