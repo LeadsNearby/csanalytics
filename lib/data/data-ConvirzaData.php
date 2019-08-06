@@ -51,6 +51,4 @@ class ConvirzaApI {
 
 $convirza = new ConvirzaApI();
 
-var_dump($convirza->request('/call/list', 'GET'));
-
 ?>
