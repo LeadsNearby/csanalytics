@@ -36,9 +36,6 @@ require_once CSAnalytics_ADMIN . '/admin-functions.php';
 // Load External Functions
 require_once CSAnalytics_INC . '/functions.php';
 
-// Load Convirza File
-require_once CSAnalytics_DATA . '/data-ConvirzaData.php';
-
 // require_once(CSAnalytics_UPDATER . '/github-updater.php' );
 // new GitHubPluginUpdater( __FILE__, 'LeadsNearby', 'csanalytics' );
 

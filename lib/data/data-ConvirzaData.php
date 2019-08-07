@@ -1,5 +1,8 @@
 <?php
 
+$parse_uri = explode('wp-content', $_SERVER['SCRIPT_FILENAME']);
+require_once $parse_uri[0] . 'wp-load.php';
+
 class ConvirzaApI {
 
     private $token = '';
@@ -37,6 +40,7 @@ class ConvirzaApI {
     }
 
     public function request($endpoint, $request, $body = '') {
+
         $response = wp_remote_get($this->api_base_url . $endpoint, array(
             'headers' => array(
                 'Authorization' => 'bearer ' . $this->token,
@@ -44,11 +48,23 @@ class ConvirzaApI {
             ),
         ));
 
-        return json_decode($response['body'], true);
+        return $response;
+
     }
 
 }
 
+$id = get_option('gapi_dev_conv_profile');
+$params = array(
+    'external_id' => $id,
+    'repeat_call' => false,
+);
+
+$query = http_build_query($params);
+
 $convirza = new ConvirzaApI();
+$call_data = $convirza->request('/call/detail?external_id[]=' . $id . '&recordURL=true', 'GET');
+
+echo $call_data['body'];
 
 ?>
