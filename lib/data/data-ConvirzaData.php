@@ -55,15 +55,9 @@ class ConvirzaApI {
 }
 
 $id = get_option('gapi_dev_conv_profile');
-$params = array(
-    'external_id' => $id,
-    'repeat_call' => false,
-);
-
-$query = http_build_query($params);
 
 $convirza = new ConvirzaApI();
-$call_data = $convirza->request('/call/detail?external_id[]=' . $id . '&recordURL=true', 'GET');
+$call_data = $convirza->request('/call/detail?filter=external_id=' . $id . '&recordURL=true', 'GET');
 
 echo $call_data['body'];
 
