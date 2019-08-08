@@ -1,95 +1,64 @@
 <?php
 
-ob_start();
+$parse_uri = explode('wp-content', $_SERVER['SCRIPT_FILENAME']);
+require_once $parse_uri[0] . 'wp-load.php';
 
-$parse_uri = explode( 'wp-content', $_SERVER['SCRIPT_FILENAME'] );
-require_once( $parse_uri[0] . 'wp-load.php' );;
+class ConvirzaApI {
 
-$gapi_dev_email = get_option('gapi_dev_email');
-$gapi_dev_key = get_option('gapi_dev_key');
-$dev_conv_profile = get_option('gapi_dev_conv_profile'); 
+    private $token = '';
+    private $api_base_url = '';
 
-/**
- * Set Google service account details
- */
-$google_account = array(
-  'email'   => $gapi_dev_email,
-  'key'     => file_get_contents( $gapi_dev_key ),
-  'profile' => $dev_conv_profile //Unfiltered Data
-);
+    public function __construct() {
+        $this->token = $this->convirza_auth();
+        $this->api_base_url = 'https://apicfa.convirza.com/v2';
+    }
 
+    private function convirza_auth() {
 
-/**
- * Returns Analytics API object
- */
-function getService( $service_account_email, $key ) {
-  // Creates and returns the Analytics service object.
+        $auth_body = array(
+            "grant_type" => "password",
+            "client_id" => "system",
+            "client_secret" => "f558ba166258089b2ef322c340554c",
+            "username" => "devops@leadsnearby.com",
+            "password" => "EEx99GnDppECGwHS",
+        );
 
-  // Load the Google API PHP Client Library.
-  require_once 'Google/autoload.php';
+        $url = 'https://apicfa.convirza.com/oauth/token';
 
-  // Create and configure a new client object.
-  $client = new Google_Client();
-  $client->setApplicationName( 'Google Analytics Dashboard' );
-  $analytics = new Google_Service_Analytics( $client );
+        $response = wp_remote_post($url, array(
+            'method' => 'POST',
+            'headers' => array(
+                'content-type' => 'application/json',
+            ),
+            'body' => json_encode($auth_body),
+        ));
 
-  // Read the generated client_secrets.p12 key.
-  $cred = new Google_Auth_AssertionCredentials(
-      $service_account_email,
-      array( Google_Service_Analytics::ANALYTICS_READONLY ),
-      $key
-  );
-  $client->setAssertionCredentials( $cred );
-  if( $client->getAuth()->isAccessTokenExpired() ) {
-    $client->getAuth()->refreshTokenWithAssertion( $cred );
-  }
+        $response_body = json_decode($response['body'], true);
 
-  return $analytics;
+        //Return the auth token
+        return $response_body['access_token'];
+    }
+
+    public function request($endpoint, $request, $body = '') {
+
+        $response = wp_remote_get($this->api_base_url . $endpoint, array(
+            'headers' => array(
+                'Authorization' => 'bearer ' . $this->token,
+                'Content-Type' => 'application/json',
+            ),
+        ));
+
+        return $response;
+
+    }
+
 }
 
-/**
- * Get Analytics API instance
- */
-$analytics = getService(
-  $google_account[ 'email' ],
-  $google_account[ 'key' ]
-);
+$id = get_option('gapi_dev_conv_profile');
 
-/**
- * Variables for Start and End Dates
- */
-$fromDate = get_option('gapi_calendar_start');
-$toDate = get_option('gapi_calendar_end'); 
+$convirza = new ConvirzaApI();
+$call_data = $convirza->request('/call/detail?filter=external_id=' . $id . '&recordURL=true', 'GET');
 
-/**
- * Query the Analytics data Sessions and Page Views by Date
- */
-$results = $analytics->data_ga->get(
-  'ga:' . $google_account[ 'profile' ],
-  $fromDate,
-  $toDate,
-  'ga:goalCompletionsAll,ga:goalValueAll',
-  array(
-    'dimensions'  => 'ga:channelGrouping',
-    'sort'        => 'ga:channelGrouping',
-    'max-results' => 30
-  ) );
-$rows = $results->getRows();
+echo $call_data['body'];
 
-/**
- * Format and output data as JSON
- */
-$data = array();
-foreach( $rows as $row ) {
-  $data[] = array(
-    'channelGrouping'   => $row[0],
-    'goalCompletionsAll'  => $row[1],
-    'goalValueAll' => $row[2]
-    //'pageviews' => $row[3]
-  );
-}
-
-ob_end_clean();
-
-echo json_encode( $data );
-
+?>
