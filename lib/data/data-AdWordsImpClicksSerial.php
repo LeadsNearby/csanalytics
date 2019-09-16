@@ -30,6 +30,11 @@ function getService( $service_account_email, $key ) {
   // Create and configure a new client object.
   $client = new Google_Client();
   $client->setApplicationName( 'Google Analytics Dashboard' );
+
+  // Set the Cache Directory
+  $client->setClassConfig('Google_Cache_File', 'directory', plugin_dir_path(__DIR__) . 'data/cache/');
+  $cache = new Google_Cache_File($client);
+
   $analytics = new Google_Service_Analytics( $client );
 
   // Read the generated client_secrets.p12 key.
