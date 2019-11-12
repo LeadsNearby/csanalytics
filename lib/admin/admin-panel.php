@@ -2931,12 +2931,12 @@ function csanalytics_panel() {
 								<div id="csa_primary_dimension" class="csa-select">
 									<form method="post" action="">
 										<span class="label">Primary Dimension:</span>
-										<input type="radio" name="primary_dimension" value="channelGrouping" <?php checked(channelGrouping, get_option('gapi_primary_dimension'), true);?>><span>Default Channel Grouping</span>
-										<input type="radio" name="primary_dimension" value="landingPagePath" <?php checked(landingPagePath, get_option('gapi_primary_dimension'), true);?>><span>Landing Page</span>
-										<input type="radio" name="primary_dimension" value="sourceMedium" <?php checked(sourceMedium, get_option('gapi_primary_dimension'), true);?>><span>Source / Medium</span>
-										<input type="radio" name="primary_dimension" value="source" <?php checked(source, get_option('gapi_primary_dimension'), true);?>><span>Source</span>
-										<input type="radio" name="primary_dimension" value="medium" <?php checked(medium, get_option('gapi_primary_dimension'), true);?>><span>Medium</span>
-										<input type="radio" name="primary_dimension" value="keyword" <?php checked(keyword, get_option('gapi_primary_dimension'), true);?>><span>Keyword</span>
+										<input type="radio" name="primary_dimension" value="channelGrouping" <?php checked('channelGrouping', get_option('gapi_primary_dimension'), true);?>><span>Default Channel Grouping</span>
+										<input type="radio" name="primary_dimension" value="landingPagePath" <?php checked('landingPagePath', get_option('gapi_primary_dimension'), true);?>><span>Landing Page</span>
+										<input type="radio" name="primary_dimension" value="sourceMedium" <?php checked('sourceMedium', get_option('gapi_primary_dimension'), true);?>><span>Source / Medium</span>
+										<input type="radio" name="primary_dimension" value="source" <?php checked('source', get_option('gapi_primary_dimension'), true);?>><span>Source</span>
+										<input type="radio" name="primary_dimension" value="medium" <?php checked('medium', get_option('gapi_primary_dimension'), true);?>><span>Medium</span>
+										<input type="radio" name="primary_dimension" value="keyword" <?php checked('keyword', get_option('gapi_primary_dimension'), true);?>><span>Keyword</span>
 										<div class="analytics-sort-container">
 											<div>
 												<label>
