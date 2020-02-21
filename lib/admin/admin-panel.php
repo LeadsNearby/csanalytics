@@ -4004,9 +4004,9 @@ function csanalytics_panel() {
 								<div id="csa_adw_primary_dimension" class="csa-select">
 									<form method="post" action="">
 										<span class="label">Primary Dimension:</span>
-										<input type="radio" name="adw_primary_dimension" value="campaign" <?php checked(campaign, get_option('gapi_adw_primary_dimension'), true);?>><span>Campaign / Campaign ID</span>
-										<input type="radio" name="adw_primary_dimension" value="adGroup" <?php checked(adGroup, get_option('gapi_adw_primary_dimension'), true);?>><span>Ad Group</span>
-										<input type="radio" name="adw_primary_dimension" value="keyword" <?php checked(keyword, get_option('gapi_adw_primary_dimension'), true);?>><span>Keyword</span>
+										<input type="radio" name="adw_primary_dimension" value="campaign" <?php checked('campaign', get_option('gapi_adw_primary_dimension'), true);?>><span>Campaign / Campaign ID</span>
+										<input type="radio" name="adw_primary_dimension" value="adGroup" <?php checked('adGroup', get_option('gapi_adw_primary_dimension'), true);?>><span>Ad Group</span>
+										<input type="radio" name="adw_primary_dimension" value="keyword" <?php checked('keyword', get_option('gapi_adw_primary_dimension'), true);?>><span>Keyword</span>
 										<div class="analytics-sort-container">
 											<div style="display:inline-block">
 												<label>
