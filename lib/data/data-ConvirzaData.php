@@ -18,9 +18,9 @@ class ConvirzaApI {
         $auth_body = array(
             "grant_type" => "password",
             "client_id" => "system",
-            "client_secret" => "f558ba166258089b2ef322c340554c",
-            "username" => "devops@leadsnearby.com",
-            "password" => "EEx99GnDppECGwHS",
+            "client_secret" => "{$client_secret}",
+            "username" => "{$client_email}",
+            "password" => "{$client_pwd}",
         );
 
         $url = 'https://apicfa.convirza.com/oauth/token';
